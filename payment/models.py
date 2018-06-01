@@ -22,8 +22,8 @@ class Order(BaseModel):
             ('W',("微信支付")),
         )
 
-    user = models.ForeignKey('accounts.User_profile',verbose_name = "用户",related_name = "order_user",null=True,blank=True)
-    product = models.ForeignKey("product.Product",verbose_name = "商品",related_name = "order_product",null=True,blank=True)
+    user = models.ForeignKey('accounts.User_profile',on_delete=models.CASCADE,verbose_name = "用户",related_name = "order_user",null=True,blank=True)
+    product = models.ForeignKey("product.Product",on_delete=models.CASCADE,verbose_name = "商品",related_name = "order_product",null=True,blank=True)
     total_fee = models.DecimalField(max_digits = 10,decimal_places = 2,verbose_name="总价")
     channel = models.CharField(max_length = 1,verbose_name = "支付渠道",null = True,blank = True,choices = CHANNEL_CHOICES)
     is_payment = models.BooleanField(verbose_name="是否付款",default=False)

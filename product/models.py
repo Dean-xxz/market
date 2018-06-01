@@ -9,6 +9,7 @@ import json
 from django.db import models
 from utils.basemodel.base import BaseModel
 from django.core import serializers
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Category(BaseModel):
@@ -45,12 +46,12 @@ class Product(BaseModel):
     商品表：定义商品详细属性
     """
 
-    category = models.ForeignKey("Category",verbose_name="所属商品分类",help_text="请选择该商品所属分类")
+    category = models.ForeignKey("Category",on_delete=models.CASCADE,related_name="product_category",verbose_name="所属商品分类",help_text="请选择该商品所属分类")
     title = models.CharField(max_length=128, verbose_name="商品标题")
     english_title = models.CharField(max_length=128,verbose_name="英文标题",null=True,blank=True)
     pre_info = models.CharField(max_length=1024,verbose_name="优惠信息",null=True,blank=True)
     descp = models.TextField(max_length=1024,verbose_name="商品简介",null=True,blank=True)
-    detail_info = models.TextField(max_length=1024,verbose_name="商品详情")
+    detail_info = RichTextField(verbose_name="商品详情")
     image = models.ImageField(upload_to="media/product/product/image/",verbose_name="商品封面大图")
     detail_image = models.ImageField(upload_to="media/product/product/detail_image/",verbose_name="商品内部小图")
     price = models.DecimalField(max_digits=10 ,decimal_places =0,verbose_name="商品价格")
@@ -62,8 +63,8 @@ class Product(BaseModel):
 
 
     class Meta:
-        verbose_name = "商品表表"
-        verbose_name_plural = "商品表"
+        verbose_name = "商品"
+        verbose_name_plural = "商品"
         ordering = ['order',]
 
     def __str__(self):
