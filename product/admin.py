@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category,Product
+from .models import Category,Product,Color,Image,Value
 
 # Register your models here.
 
@@ -17,3 +17,28 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Product,ProductAdmin)
+
+
+class ColorAdmin(admin.ModelAdmin):
+    list_display = ('product','value','order')
+    list_filter = ('product',)
+
+
+admin.site.register(Color,ColorAdmin)
+
+
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ('product','image','order')
+    list_filter = ('product',)
+
+
+admin.site.register(Image,ImageAdmin)
+
+
+class ValueAdmin(admin.ModelAdmin):
+    list_display = ('product','value','order')
+    list_filter = ('product',)
+
+
+admin.site.register(Value,ValueAdmin)
+

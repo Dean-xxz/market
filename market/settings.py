@@ -31,14 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'redactor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ckeditor',
-    'ckeditor_uploader',
+    # 'ckeditor',
+    # 'ckeditor_uploader',
     'accounts',
     'product',
     'payment',
@@ -132,24 +133,29 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 MEDIA_URL = '/media/'
 
-#ckeditor settings
-CKEDITOR_UPLOAD_PATH = "content"
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': (
-			['div','Source','-','Save','NewPage','Preview','-','Templates'],
-			['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker','Scayt'],
-			['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-			['Form','Checkbox','Radio','TextField','Textarea','Select','Button', 'ImageButton','HiddenField'],
-			['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
-			['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
-			['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
-			['Link','Unlink','Anchor'],
-			['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
-			['Styles','Format','Font','FontSize'],
-			['TextColor','BGColor'],
-			['Maximize','ShowBlocks','-','About', 'pbckcode'],
-		),
-	}
-}
+REDACTOR_OPTIONS = {'lang': 'en'}
+
+REDACTOR_UPLOAD = os.path.join(BASE_DIR,'upload')
+
+# #ckeditor settings
+# # CKEDITOR_UPLOAD_PATH =
+#
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': (
+# 			['div','Source','-','Save','NewPage','Preview','-','Templates'],
+# 			['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker','Scayt'],
+# 			['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+# 			['Form','Checkbox','Radio','TextField','Textarea','Select','Button', 'ImageButton','HiddenField'],
+# 			['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
+# 			['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+# 			['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+# 			['Link','Unlink','Anchor'],
+# 			['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+# 			['Styles','Format','Font','FontSize'],
+# 			['TextColor','BGColor'],
+# 			['Maximize','ShowBlocks','-','About', 'pbckcode'],
+# 		),
+# 	}
+# }
