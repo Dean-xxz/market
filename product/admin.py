@@ -1,7 +1,12 @@
 from django.contrib import admin
-from .models import Category,Product,Color,Image,Value
+from .models import Category,Product,Color,Image,Value,Advertisement
 
 # Register your models here.
+
+class AdAdmin(admin.ModelAdmin):
+    list_display = ('title','order','link')
+
+admin.site.register(Advertisement,AdAdmin)
 
 
 class CategoryAdmin(admin.ModelAdmin):
