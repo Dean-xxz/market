@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-        # 'ckeditor',
-        # 'ckeditor_uploader',
+    'ckeditor',
+    'ckeditor_uploader',
     'accounts',
     'product',
     'payment',
@@ -139,23 +139,23 @@ REDACTOR_OPTIONS = {'lang': 'en'}
 REDACTOR_UPLOAD = os.path.join(BASE_DIR,'upload')
 
 # #ckeditor settings
-# # CKEDITOR_UPLOAD_PATH =
-#
-# CKEDITOR_CONFIGS = {
-#     'default': {
-#         'toolbar': (
-# 			['div','Source','-','Save','NewPage','Preview','-','Templates'],
-# 			['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker','Scayt'],
-# 			['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-# 			['Form','Checkbox','Radio','TextField','Textarea','Select','Button', 'ImageButton','HiddenField'],
-# 			['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
-# 			['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
-# 			['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
-# 			['Link','Unlink','Anchor'],
-# 			['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
-# 			['Styles','Format','Font','FontSize'],
-# 			['TextColor','BGColor'],
-# 			['Maximize','ShowBlocks','-','About', 'pbckcode'],
-# 		),
-# 	}
-# }
+CKEDITOR_UPLOAD_PATH = 'upload'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': (
+			['div','Source','-','Save','NewPage','Preview','-','Templates'],
+			['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker','Scayt'],
+			['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+			['Form','Checkbox','Radio','TextField','Textarea','Select','Button', 'ImageButton','HiddenField'],
+			['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
+			['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+			['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+			['Link','Unlink','Anchor'],
+			['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+			['Styles','Format','Font','FontSize'],
+			['TextColor','BGColor'],
+			['Maximize','ShowBlocks','-','About', 'pbckcode'],
+		),
+	}
+}
