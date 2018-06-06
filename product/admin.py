@@ -25,7 +25,7 @@ admin.site.register(Product,ProductAdmin)
 
 
 class ColorAdmin(admin.ModelAdmin):
-    list_display = ('product','value','order')
+    list_display = ('product','title','order')
     list_filter = ('product',)
 
 

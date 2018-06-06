@@ -50,7 +50,6 @@ class ProductListAPI(AbstractAPI):
             product.pop('descp')
             product.pop('parameter_image')
             product.pop('remarks')
-            product.pop('channel')
         return product_list
 
 
