@@ -57,7 +57,7 @@ class Product(BaseModel):
     english_title = models.CharField(max_length=128,verbose_name="英文标题",null=True,blank=True)
     pre_info = models.CharField(max_length=1024,verbose_name="优惠信息",null=True,blank=True)
     descp = models.TextField(max_length=1024,verbose_name="商品简介",null=True,blank=True)
-    detail_info = RedactorField(verbose_name="商品详情")
+    detail_info = models.ImageField(upload_to="media/product/product/detail/",verbose_name="商品详情介绍图",null=True,blank=True)
     image = models.ImageField(upload_to="media/product/product/image/",verbose_name="商品封面大图")
     price = models.DecimalField(max_digits=10 ,decimal_places =0,verbose_name="商品价格")
     parameter_image = models.ImageField(upload_to="media/product/product/parameter_image",verbose_name="商品参数图片",null=True,blank=True)
