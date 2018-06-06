@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70a876ff-6ab5-4185-8314-503bff20892c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/payment/migrations/0004_order_goods_mode.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/product/migrations/0010_auto_20180606_1036.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change beforePath="$PROJECT_DIR$/payment/apis.py" afterPath="$PROJECT_DIR$/payment/apis.py" />
-      <change beforePath="$PROJECT_DIR$/payment/models.py" afterPath="$PROJECT_DIR$/payment/models.py" />
-      <change beforePath="$PROJECT_DIR$/product/admin.py" afterPath="$PROJECT_DIR$/product/admin.py" />
-      <change beforePath="$PROJECT_DIR$/product/apis.py" afterPath="$PROJECT_DIR$/product/apis.py" />
-      <change beforePath="$PROJECT_DIR$/product/models.py" afterPath="$PROJECT_DIR$/product/models.py" />
+      <change beforePath="$PROJECT_DIR$/market/settings.py" afterPath="$PROJECT_DIR$/market/settings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,20 +17,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/market/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="141" column="30" lean-forward="false" selection-start-line="141" selection-start-column="30" selection-end-line="141" selection-end-column="30" />
+            <state relative-caret-position="1234">
+              <caret line="194" column="1" lean-forward="false" selection-start-line="194" selection-start-column="1" selection-end-line="194" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/product/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
+            <state relative-caret-position="1603">
               <caret line="183" column="60" lean-forward="false" selection-start-line="183" selection-start-column="60" selection-end-line="183" selection-end-column="60" />
               <folding />
             </state>
@@ -47,8 +40,8 @@
       <file leaf-file-name="apis.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/product/apis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2134">
-              <caret line="11" column="73" lean-forward="false" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+            <state relative-caret-position="22">
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="e#84#140#0" expanded="true" />
               </folding>
@@ -103,8 +96,8 @@
       <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/product/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="855">
-              <caret line="54" column="24" lean-forward="false" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
+            <state relative-caret-position="261">
+              <caret line="27" column="36" lean-forward="false" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -172,12 +165,12 @@
         <option value="$PROJECT_DIR$/accounts/models.py" />
         <option value="$PROJECT_DIR$/payment/urls.py" />
         <option value="$PROJECT_DIR$/product/urls.py" />
-        <option value="$PROJECT_DIR$/market/settings.py" />
-        <option value="$PROJECT_DIR$/product/admin.py" />
-        <option value="$PROJECT_DIR$/product/apis.py" />
         <option value="$PROJECT_DIR$/payment/models.py" />
         <option value="$PROJECT_DIR$/payment/apis.py" />
         <option value="$PROJECT_DIR$/product/models.py" />
+        <option value="$PROJECT_DIR$/product/admin.py" />
+        <option value="$PROJECT_DIR$/product/apis.py" />
+        <option value="$PROJECT_DIR$/market/settings.py" />
       </list>
     </option>
   </component>
@@ -335,17 +328,32 @@
       <option name="project" value="LOCAL" />
       <updated>1528249845883</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="1.1.1:修改product 联网方式字段">
+      <created>1528252652941</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1528252652941</updated>
+    </task>
+    <task id="LOCAL-00007" summary="1.1.2:修改product 产品列表api">
+      <created>1528253933726</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1528253933726</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22419186" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22419186" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1765625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -377,7 +385,9 @@
     <MESSAGE value="产品模块" />
     <MESSAGE value="1.0" />
     <MESSAGE value="1.1:修改product详情字段" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.1:修改product详情字段" />
+    <MESSAGE value="1.1.1:修改product 联网方式字段" />
+    <MESSAGE value="1.1.2:修改product 产品列表api" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.1.2:修改product 产品列表api" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -784,34 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/market/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="141" column="30" lean-forward="false" selection-start-line="141" selection-start-column="30" selection-end-line="141" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/product/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="54" column="24" lean-forward="false" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/product/apis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2134">
-          <caret line="11" column="73" lean-forward="false" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
-          <folding>
-            <element signature="e#84#140#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/payment/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-681">
@@ -832,8 +814,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/product/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="1603">
           <caret line="183" column="60" lean-forward="false" selection-start-line="183" selection-start-column="60" selection-end-line="183" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/product/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="27" column="36" lean-forward="false" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/product/apis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="e#84#140#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/market/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1234">
+          <caret line="194" column="1" lean-forward="false" selection-start-line="194" selection-start-column="1" selection-end-line="194" selection-end-column="1" />
           <folding />
         </state>
       </provider>
