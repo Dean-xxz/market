@@ -8,7 +8,7 @@ import json
 from django.db import models
 from utils.basemodel.base import BaseModel
 from django.core import serializers
-from product.models import Product
+from product.models import Product,Color,Value,Image,Mode
 from accounts.models import User_profile
 
 
@@ -54,6 +54,7 @@ class Order_Goods(BaseModel):
     product = models.ForeignKey("product.Product",on_delete=models.CASCADE,verbose_name = "商品",related_name = "goods_product",null=True,blank=True)
     color = models.ForeignKey("product.Color",verbose_name="商品颜色",related_name = "goods_color",null=True,blank=True)
     value = models.ForeignKey("product.Value",verbose_name="商品规格",related_name = "goods_value",null=True,blank=True)
+    mode = models.ForeignKey("product.Mode",verbose_name="商品联网方式",related_name = "goods_mode",null=True,blank=True)
 
 
     class Meta:
@@ -62,7 +63,7 @@ class Order_Goods(BaseModel):
         ordering = ["-update_time",]
 
     def __str__(self):
-        return "%s - %s - %s"%(self.product.title,self.color.title,self.value.value)
+        return "%s - %s - %s - %s"%(self.product.title,self.mode.title,self.color.title,self.value.value)
 
 
     def get_json(self):
