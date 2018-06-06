@@ -9,7 +9,7 @@ from utils.view_tools import ok_json, fail_json,get_args
 from utils.abstract_api import AbstractAPI
 from utils.paginator import json_pagination_response, dict_pagination_response
 
-from .models import Category,Product,Image,Color,Value,Advertisement
+from .models import Category,Product,Image,Color,Value,Advertisement,Mode
 
 
 """
@@ -118,6 +118,17 @@ class ProductQueryAPI(AbstractAPI):
             value['value_id'] = value['id']
             value.pop('id')
         product['value_info'] = value_list
+        #产品联网方式
+        mode_list = Mode.objects.filter(product_id = product_id)
+        mode_list = [o.get_json() for o in mode_list]
+        for mode in mode_list:
+            mode.pop('is_active')
+            mode.pop('create_time')
+            mode.pop('update_time')
+            mode.pop('product')
+            mode['mode_id'] = mode['id']
+            mode.pop('id')
+        product['mode_info'] = mode_list
 
         return product
 

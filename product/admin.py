@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category,Product,Color,Image,Value,Advertisement
+from .models import Category,Product,Color,Image,Value,Advertisement,Mode
 
 # Register your models here.
 
@@ -47,3 +47,9 @@ class ValueAdmin(admin.ModelAdmin):
 
 admin.site.register(Value,ValueAdmin)
 
+class ModeAdmin(admin.ModelAdmin):
+    list_display = ('product','title','order')
+    list_filter = ('product',)
+
+
+admin.site.register(Mode,ModeAdmin)

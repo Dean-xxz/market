@@ -94,10 +94,12 @@ class OrderListAPI(AbstractAPI):
             product_title = product.product.title
             product_color = product.color.title
             product_value = product.value.value
+            product_mode = product.mode.title
             product_info = {
                 'product_title':product_title,
                 'product_color':product_color,
-                'product_value':product_value
+                'product_value':product_value,
+                'product_mode':product_mode
             }
             order['product_info'] = product_info
             order.pop('user')

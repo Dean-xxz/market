@@ -47,10 +47,7 @@ class Product(BaseModel):
     """
     商品表：定义商品详细属性
     """
-    CHOICES = (
-            ('1',("联网方式1")),
-            ('2',("联网方式2")),
-        )
+
 
     category = models.ForeignKey("Category",on_delete=models.CASCADE,related_name="product_category",verbose_name="所属商品分类",help_text="请选择该商品所属分类")
     title = models.CharField(max_length=128, verbose_name="商品标题")
@@ -67,7 +64,6 @@ class Product(BaseModel):
     is_discount = models.BooleanField(verbose_name="标记为打折商品",default=False)
     order = models.PositiveSmallIntegerField(verbose_name="商品顺序",default=0,help_text="该商品在商品列表中的顺序")
     remarks = models.TextField(verbose_name="备注",null=True,blank=True)
-    channel = models.CharField(max_length = 1,verbose_name = "联网方式",null = True,blank = True,choices = CHOICES)
 
 
     class Meta:
@@ -169,6 +165,36 @@ class Value(BaseModel):
 
     def __str__(self):
         return self.value
+
+    def get_json(self):
+        serials = serializers.serialize("json", [self])
+        struct = json.loads(serials)
+        data = struct[0]['fields']
+        if 'pk' in struct[0]:
+            data['id'] = struct[0]['pk']
+        return data
+
+
+
+class Mode(BaseModel):
+
+    """
+    商品联网方式
+    """
+    product = models.ForeignKey('Product',related_name="mode_product",verbose_name='所属商品')
+    title = models.CharField(max_length=128,verbose_name="联网方式")
+    order = models.PositiveSmallIntegerField(verbose_name="顺序",default=0,help_text="展示顺序")
+
+
+    class Meta:
+        verbose_name = "商品联网方式"
+        verbose_name_plural = "商品联网方式"
+        ordering = ['order',]
+
+
+
+    def __str__(self):
+        return self.title
 
     def get_json(self):
         serials = serializers.serialize("json", [self])
