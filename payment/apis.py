@@ -11,6 +11,7 @@ from django.views.generic import View
 from django.http import HttpResponse
 from .models import Order,Order_Goods
 from accounts.models import User_profile
+from .alipay import market_alipay
 
 """
 descp：创建订单接口
@@ -50,8 +51,15 @@ class OrderCreateAPI(AbstractAPI):
             data = order.get_json()
             # if channel == 'W':
             #     #微信支付
-            # if channel == 'Z':
-            #     #支付宝支付
+            if channel == 'Z':
+                out_trade_no = order.id
+                total_amount = total_fee
+                subject = order_goods.product.title
+                pay_link = market_alipay(out_trade_no = out_trade_no,total_amount=total_amount,subject=subject)
+                data = {
+                    'pay_link':pay_link
+                }
+                return data
             return data
 
     def format_data(self, data):
