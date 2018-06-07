@@ -32,6 +32,7 @@ class OrderCreateAPI(AbstractAPI):
             'value_id':'r',
             'color_id':'r',
             'total_fee':'r',
+            'mode_id':'r',
         }
 
     def access_db(self, kwarg):
@@ -41,8 +42,9 @@ class OrderCreateAPI(AbstractAPI):
         value_id = kwarg['value_id']
         color_id = kwarg['color_id']
         total_fee = kwarg['total_fee']
+        mode_id = kwarg['mode_id']
 
-        order_goods = Order_Goods(product_id = product_id,value_id = value_id,color_id = color_id)
+        order_goods = Order_Goods(product_id = product_id,value_id = value_id,color_id = color_id,mode_id = mode_id)
         order_goods.save()
         if order_goods:
             order_goods_id = order_goods.id
