@@ -28,6 +28,7 @@ class Order(BaseModel):
     channel = models.CharField(max_length = 1,verbose_name = "支付渠道",null = True,blank = True,choices = CHANNEL_CHOICES)
     is_payment = models.BooleanField(verbose_name="是否付款",default=False)
     is_delivery =models.BooleanField(verbose_name="是否发货",default=False)
+    count = models.IntegerField(verbose_name="商品数量",default=1)
     is_refound = models.BooleanField(verbose_name="是否退款",default=False)
     remarks = models.CharField(max_length=1024,verbose_name="备注",null=True,blank=True)
 

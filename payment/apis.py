@@ -12,6 +12,7 @@ from django.http import HttpResponse
 from .models import Order,Order_Goods
 from accounts.models import User_profile
 from .alipay import market_alipay
+from .weichat_pay import build_form_by_params
 
 """
 descp：创建订单接口
@@ -33,6 +34,7 @@ class OrderCreateAPI(AbstractAPI):
             'color_id':'r',
             'total_fee':'r',
             'mode_id':'r',
+            'count':'r',
         }
 
     def access_db(self, kwarg):
@@ -43,12 +45,13 @@ class OrderCreateAPI(AbstractAPI):
         color_id = kwarg['color_id']
         total_fee = kwarg['total_fee']
         mode_id = kwarg['mode_id']
+        count = kwarg['count']
 
         order_goods = Order_Goods(product_id = product_id,value_id = value_id,color_id = color_id,mode_id = mode_id)
         order_goods.save()
         if order_goods:
             order_goods_id = order_goods.id
-            order = Order(order_goods_id = order_goods_id,channel = channel,user_id = user_id,total_fee = total_fee)
+            order = Order(order_goods_id = order_goods_id,count =count,channel = channel,user_id = user_id,total_fee = total_fee)
             order.save()
             data = order.get_json()
             # if channel == 'W':
@@ -62,6 +65,19 @@ class OrderCreateAPI(AbstractAPI):
                     'pay_link':pay_link
                 }
                 return data
+            if channel == 'W':
+                out_trade_no = order.id
+                total_fee = 1
+                body = order_goods.product.title
+                spbill_create_ip = '121.201.67.209'
+                data = build_form_by_params({
+                    'body': body,
+                    'out_trade_no': out_trade_no,
+                    'total_fee': total_fee,
+                    'spbill_create_ip': spbill_create_ip,
+                })
+                data = json.dumps(data)
+                data = json.loads(data)
             return data
 
     def format_data(self, data):
