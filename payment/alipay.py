@@ -2,7 +2,7 @@ import os
 from alipay import AliPay
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print (BASE_DIR)
+
 
 
 app_private_key_string = open(BASE_DIR+"/payment/ali_key/rsa_private_key.pem").read()

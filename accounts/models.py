@@ -23,7 +23,8 @@ class User_profile(BaseModel):
         ordering = ["-update_time",]
 
     def __str__(self):
-        return self.address
+        return "%s - %s" % (self.phone,self.address)
+
 
     def get_json(self):
         serials = serializers.serialize("json", [self])
