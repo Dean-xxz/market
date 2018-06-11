@@ -22,11 +22,19 @@ class Order(BaseModel):
             ('W',("微信支付")),
         )
 
+    ORDER_CHOICES = (
+            ('1',("未支付")),
+            ('2',("已支付")),
+            ('3',("已发货")),
+            ('4',("已收货")),
+        )
+
+
     user = models.ForeignKey('accounts.User_profile',on_delete=models.CASCADE,verbose_name = "用户",related_name = "order_user",null=True,blank=True)
     order_goods = models.ForeignKey("Order_Goods",on_delete=models.CASCADE,verbose_name = "订单商品",related_name = "product_goods",null=True,blank=True)
     total_fee = models.DecimalField(max_digits = 10,decimal_places = 2,verbose_name="总价")
     channel = models.CharField(max_length = 1,verbose_name = "支付渠道",null = True,blank = True,choices = CHANNEL_CHOICES)
-    is_payment = models.BooleanField(verbose_name="是否付款",default=False)
+    order_status = models.CharField(max_length = 1,default = '1',verbose_name = "订单状态",null = True,blank = True,choices = ORDER_CHOICES)
     is_delivery =models.BooleanField(verbose_name="是否发货",default=False)
     count = models.IntegerField(verbose_name="商品数量",default=1)
     is_refound = models.BooleanField(verbose_name="是否退款",default=False)

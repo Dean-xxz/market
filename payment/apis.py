@@ -13,7 +13,7 @@ from .models import Order,Order_Goods
 from accounts.models import User_profile
 from .alipay import market_alipay
 from .weichat_pay import build_form_by_params
-
+from product.models import Product
 """
 descp：创建订单接口
 input：
@@ -121,11 +121,18 @@ class OrderListAPI(AbstractAPI):
             product_color = product.color.title
             product_value = product.value.value
             product_mode = product.mode.title
+            product_id = product.product.id
+            product_data = Product.objects.get(pk=product_id)
+            product_data = product_data.get_json()
+            product_image = product_data['image']
+            product_price = product_data['price']
             product_info = {
                 'product_title':product_title,
                 'product_color':product_color,
                 'product_value':product_value,
-                'product_mode':product_mode
+                'product_mode':product_mode,
+                'product_price':product_price,
+                'product_image':product_image,
             }
             order['product_info'] = product_info
             order.pop('user')
