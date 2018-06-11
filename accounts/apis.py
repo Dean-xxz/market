@@ -33,8 +33,9 @@ class CodeSendAPI(AbstractAPI):
             code += random.choice(string.digits)
 
         cache_key = "DYNAMIC_CODE" + str(phone)
-        cache.set(cache_key, code, 60 * 6)
-        content = "您的验证码为%s，%s分钟内有效。如需帮助，请联系400-998-1190【天易商城】" % (str(code), str(6))
+        cache.set(cache_key,code,60*5)
+        print (code)
+        content = "您的验证码为%s，5分钟内有效。如需帮助，请联系400-998-1190【天易商城】" % (str(code))
         send_message_new(phone, content, is_code=True)
         return 'send successful'
 
@@ -133,3 +134,33 @@ class UserProfileUpdateAPI(AbstractAPI):
 
 
 update_userprofile_api = UserProfileUpdateAPI().wrap_func()
+
+
+
+class UserQueryAPI(AbstractAPI):
+    def config_args(self):
+        self.args = {
+            'user_id':'r',
+        }
+
+    def access_db(self, kwarg):
+        user_id = kwarg['user_id']
+        try:
+            user = User_profile.objects.get(pk=user_id)
+            user = user.get_json()
+            user.pop('create_time')
+            user.pop('update_time')
+            user.pop('is_active')
+            user['user_id'] = user['id']
+            user.pop('id')
+            return user
+        except User_profile.DoesNotExist:
+            return None
+
+    def format_data(self, data):
+        if data is not None:
+            return ok_json(data = data)
+        return fail_json('user is not exist')
+
+
+query_user_api = UserQueryAPI().wrap_func()
