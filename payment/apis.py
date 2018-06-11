@@ -131,6 +131,7 @@ class OrderListAPI(AbstractAPI):
                 'product_color':product_color,
                 'product_value':product_value,
                 'product_mode':product_mode,
+                'product_id':product_id,
                 'product_price':product_price,
                 'product_image':product_image,
             }
