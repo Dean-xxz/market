@@ -168,3 +168,53 @@ class AdListAPI(AbstractAPI):
 
 
 list_ad_api = AdListAPI().wrap_func()
+
+
+
+"""
+商品列表按照商品分类展示
+"""
+class ProductCategoryListAPI(AbstractAPI):
+    def config_args(self):
+        self.args = {
+
+        }
+
+    def access_db(self, kwarg):
+        data = Category.objects.filter(is_active=True)
+        data = [o.get_json() for o in data]
+        for i in data:
+            category_id = i['id']
+            i['category_id'] = category_id
+            i.pop('id')
+            i.pop('is_active')
+            i.pop('update_time')
+            i.pop('create_time')
+            product_list = Product.objects.filter(is_active=True)
+            product_list = [o.get_json() for o in product_list]
+            for product in product_list:
+                category_id = product['category']
+                category = Category.objects.get(pk=category_id)
+                category_name = category.title
+                product['category_id'] = category_id
+                product['category_name'] = category_name
+                product.pop('is_active')
+                product.pop('update_time')
+                product.pop('create_time')
+                product.pop('category')
+                product['product_id'] = product['id']
+                product.pop('id')
+                product.pop('detail_info')
+                product.pop('english_title')
+                product.pop('descp')
+                product.pop('parameter_image')
+                product.pop('remarks')
+            i['product_list'] = product_list
+        return data
+
+
+    def format_data(self, data):
+        return ok_json(data = data)
+
+
+list_product_category_api = ProductCategoryListAPI().wrap_func()

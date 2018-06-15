@@ -10,7 +10,7 @@ from utils.view_tools import ok_json, fail_json,get_args
 from utils.abstract_api import AbstractAPI
 from utils.paginator import json_pagination_response, dict_pagination_response
 
-from .models import User_profile
+from .models import User_profile,Info
 from .utils import send_message_new
 
 """
@@ -125,8 +125,12 @@ class UserProfileUpdateAPI(AbstractAPI):
             r = User_profile.objects.filter(pk = user_id).update(re_phone = re_phone)
         if receiver:
             r = User_profile.objects.filter(pk = user_id).update(receiver = receiver)
-
-        return 'update successful'
+        data = User_profile.objects.get(pk = user_id)
+        data = data.get_json()
+        data.pop('is_active')
+        data.pop('create_time')
+        data.pop('update_time')
+        return data
 
 
     def format_data(self, data):
@@ -164,3 +168,86 @@ class UserQueryAPI(AbstractAPI):
 
 
 query_user_api = UserQueryAPI().wrap_func()
+
+
+#宽带信息创建接口
+class InfoCreateAPI(AbstractAPI):
+    def config_args(self):
+        self.args = {
+            'phone':'r',
+            'id_card':'r',
+            'address':'r',
+            'date':'r',
+            'user_id':'r',
+            'name':'r',
+        }
+
+    def access_db(self, kwarg):
+        user_id = kwarg['user_id']
+        phone = kwarg['phone']
+        id_card = kwarg['id_card']
+        address = kwarg['address']
+        name = kwarg['name']
+        date = kwarg['date']
+
+        try:
+            info = Info.objects.get(user_id=user_id)
+            info = Info.objects.filter(user_id=user_id).update(phone=phone,id_card=id_card,address=address,nick=name,date=date)
+            data = Info.objects.get(user_id=user_id)
+            data = data.get_json()
+            data.pop('is_active')
+            data.pop('create_time')
+            data.pop('update_time')
+            data['user_id'] = data['user']
+            data.pop('user')
+            return data
+        except Info.DoesNotExist:
+            info = Info(user_id=user_id,phone=phone,id_card=id_card,address=address,nick=name,date=date)
+            info.save()
+            if info:
+                data = info.get_json()
+                data.pop('is_active')
+                data.pop('create_time')
+                data.pop('update_time')
+                data['user_id'] = data['user']
+                data.pop('user')
+                return data
+            else:
+                return None
+
+    def format_data(self, data):
+        if data is not None:
+            return ok_json(data = data)
+        return fail_json('save faild')
+
+
+create_info_api = InfoCreateAPI().wrap_func()
+
+
+#宽带信息查询接口
+class InfoQueryAPI(AbstractAPI):
+    def config_args(self):
+        self.args = {
+            'user_id':'r',
+        }
+
+    def access_db(self, kwarg):
+        user_id = kwarg['user_id']
+        info = Info.objects.filter(user_id=user_id).first()
+        if info is not None:
+            info = info.get_json()
+            info.pop('is_active')
+            info.pop('update_time')
+            info.pop('create_time')
+            return info
+        else:
+            info = {}
+            return info
+        return 'send successful'
+
+    def format_data(self, data):
+        return ok_json(data = data)
+
+
+query_info_api = InfoQueryAPI().wrap_func()
+

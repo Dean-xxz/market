@@ -10,7 +10,7 @@ from utils.abstract_api import AbstractAPI
 from django.views.generic import View
 from django.http import HttpResponse
 from .models import Order,Order_Goods
-from accounts.models import User_profile
+from accounts.models import User_profile,Info
 from .alipay import market_alipay
 from .weichat_pay import build_form_by_params
 from product.models import Product
@@ -115,6 +115,15 @@ class OrderListAPI(AbstractAPI):
             user['user_id'] = user['id']
             user.pop('id')
             order['user_info'] = user
+            info = Info.objects.filter(user_id=user_id).first()
+            if info is not None:
+                info = info.get_json()
+                info.pop('is_active')
+                info.pop('create_time')
+                info.pop('update_time')
+                order['net_info'] = info
+            if info is None:
+                order['net_info'] = {}
             goods_id = order['order_goods']
             product = Order_Goods.objects.get(pk=goods_id)
             product_title = product.product.title
